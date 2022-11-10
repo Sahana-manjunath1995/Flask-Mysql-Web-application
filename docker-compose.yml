@@ -1,0 +1,31 @@
+
+version: "3"
+services:
+  app:
+    build: ./app
+
+    ports:
+      - "5000:5000"
+    entrypoint: ["python", "netflix1.py"]
+
+
+    links:
+      - db
+    volumes:
+      - ${NETFLIX_PROJECT_DIR}:/home/
+
+  db:
+    image: mariadb:latest
+    ports:
+      - "3306:3306"
+    environment:
+
+      MARIADB_USER : sahana
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_PASSWORD: root
+    volumes:
+      - /var/run/mysql/:/var/run/mysql/
+      - ${NETFLIX_DATA_DIR}:/var/lib/mysql
+
+
+

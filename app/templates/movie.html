@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        table, th, td {
+            border:1px solid black;
+            border-collapse: collapse;
+        }
+        </style>
+    <head>
+        <!-- jquery -->
+        <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <!-- [/] jquery -->
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    </head>
+
+    <body>
+        <h1>Netflix Movies</h1>
+
+        <div class="form-group" id="columns">
+            <select id="column_names">
+
+            </select>
+        <select id="type" name="type">
+            <option value=''>Select</option>
+            <option value="Movie" selected>Movie</option>
+            <option value="Director">Director</option>
+            <option value="Actor">Actor</option>
+            <option value="TV_show">TV show</option>
+        </select>
+
+        <select id="sorting">
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+
+        </select>
+        <input type="text" id="livebox">
+        <p id = "datalist"></p>
+
+    </div>
+
+
+        <button class="btn btn-warning" id="searchbtn">Search</button>
+
+
+    <div id="table_container">
+
+
+
+    </div>
+
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.js"
+    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+    crossorigin="anonymous">
+    </script>
+    <script>
+        var server = "http://127.0.0.1:5000";
+        var appdir = "/columns";
+
+        function get_columns(){
+            console.log("clicked")
+            $.ajax({
+                url:server+appdir,
+                type: "GET", dataType: 'json'
+            })
+            .done(function(column_lis){
+                console.log(column_lis)
+
+                for (let x of column_lis) {
+                    text=`<option value=${x}>${x}</option>`;
+                $('#column_names').append(text);
+                }
+            })
+            .fail(function() {
+                console.log("error");
+            })
+        }
+        get_columns()
+
+        $(document).ready(function(){
+
+
+            $("#livebox").on("input",function(e){
+                        textinlivebox = $("#livebox").val();
+                        var type = $("#type").val();
+                        $("#datalist").empty();
+                        $.ajax({
+                        method:"post",
+                        url:"/search",
+                        data:{search:textinlivebox, type:type},
+                        success:function(result){
+                            console.log(result)
+                            var data = "<ul>";
+                            $.each(result,function(index,value){
+                                data += "<li>"+value+"</li>";
+                            });
+                            data += "</ul>";
+                            $("#datalist").html(data);
+                            }
+                        });
+
+                    })
+
+            function search_data() {
+                    $("#searchbtn").click(function() {
+                        textinlivebox = $("#livebox").val()
+                        var type = $("#type").val();
+                        var sorted = $('#sorting').val();
+                        var column_name = $("#column_names").val();
+                        $.ajax({
+                            method: "post",
+                            url: "/datasearch",
+                            data: {search:textinlivebox, type:type, sorted:sorted, columns:column_name},
+                            dataType: 'json',
+                            success: function(result) {
+                                console.log(result)
+                                var tab_data =  "<table style= 'width:50%'>"
+                                for (let row of result) {
+                                    console.log(row)
+                                    tab_data = tab_data + "<tr>"
+                                    for (let value of row){
+                                        console.log(value)
+                                        tab_data = tab_data+ "<td>" + value + "</td>"
+                                        console.log(tab_data)
+                                // tab_data = tab_data + "</tr>"
+                                // console.log(tab_data)
+                                var dat = "<table style= 'width:50%'>"+ tab_data +  "</tr>"+"</table>"
+
+
+
+                                    }
+
+
+
+
+                                    // $("#table_container").html(tab_data)
+                                }
+                                $("#table_container").html(dat)
+
+
+                            }
+
+
+                        })
+                    })
+
+                    }
+
+            search_data()
+        })
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+    </body>
+</html>
