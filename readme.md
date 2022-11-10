@@ -9,3 +9,6 @@ docker compose  --env-file .env.local up --build
 ```bash
 docker compose  --env-file .env.local down
 ```
+
+### mysqldump
+mysql -uroot -proot <table_name> > <filename.sql>
