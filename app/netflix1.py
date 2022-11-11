@@ -1,29 +1,17 @@
-from distutils.log import debug
-from socket import socket
+# from distutils.log import debug
+import logging
 from flask import Flask, render_template, jsonify
-# import pymysql.cursors
-import mysql.connector
+import config
 from flask import request
 
 
 app = Flask(__name__)
 
-# conn = pymysql.connect(
-#     host='db',
-#     user='root',
-#     password='root',
-#     port=3306,
-#     database='Movies'
+logger = logging.getLogger()
 
-# )
-conn = mysql.connector.connect(
-    host='db',
-    user='root',
-    password='root',
-    port=3306,
-    database='Movies'
-)
+conn =  config.connect()
 cur = conn.cursor()
+
 
 @app.route('/columns', methods=['GET'])
 def get_column():
@@ -32,13 +20,14 @@ def get_column():
     column_lis = []
     for row in cur:
         for x in row:
-            print(x)
+            app.logger.info('Value of row accessed')
         column_lis.append(str(x))
     print(column_lis)
     resp = jsonify(column_lis)
     print(resp)
 
     return resp
+
 
 class Queries:
     Movie = "select title from movie_title where type = 'Movie' and title like '%{}%' limit 5"
@@ -75,27 +64,24 @@ def movies():
 @app.route('/datasearch', methods=['GET', 'POST'])
 def search_data():
     search = request.form.get("search")
-    print(search)
+    app.logger.info('The value of the search is accessed')
     type = request.form.get("type")
-    print(type)
+    app.logger.info('The value of the type is accessed')
     sorted = request.form.get("sorted")
-    print(sorted)
+    app.logger.info('The value of the sorted is accessed')
     columns = request.form.get("columns")
-    print(columns)
+    app.logger.info('The value of the columns is accessed')
 
     query = getattr(Final_query, type )
 
     cur.execute(query.format(search, column_name = columns, sort_column = sorted))
     result = cur.fetchall()
-    print(result)
+    app.logger.info('sorted result is accessed')
     return jsonify(result)
 
 
-
-
 if __name__ == "__main__":
-
-   app.run(host="0.0.0.0", debug=True)
+    app.run(host="0.0.0.0", debug=True)
 
 
 
