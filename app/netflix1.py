@@ -22,9 +22,8 @@ def get_column():
         for x in row:
             app.logger.info('Value of row accessed')
         column_lis.append(str(x))
-    print(column_lis)
+    app.logger.info('Column list accessed')
     resp = jsonify(column_lis)
-    print(resp)
 
     return resp
 
@@ -58,6 +57,7 @@ def movies():
 
     cur.execute(query.format(search))
     result = cur.fetchall()
+    
     return jsonify(result)
 
 
@@ -77,8 +77,8 @@ def search_data():
     cur.execute(query.format(search, column_name = columns, sort_column = sorted))
     result = cur.fetchall()
     app.logger.info('sorted result is accessed')
+    
     return jsonify(result)
-
 
 
 if __name__ == "__main__":
