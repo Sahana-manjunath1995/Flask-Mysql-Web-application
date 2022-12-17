@@ -17,23 +17,26 @@ Code for creating a docker web application with Flask, MySQL and containerize us
 ## Installation of docker in Ubuntu-wsl
 
    1. Check if the system is up-to-date using the following command:
-
-      $ sudo apt-get update
+```bash
+$ sudo apt-get update
+```
 
    2. Install Docker using the following command:
-
-      $ sudo apt install docker.io
+```bash
+$ sudo apt install docker.io
+```
 
       You’ll then get a prompt asking you to choose between y/n - choose y
 
    3. Install all the dependency packages using the following command:
-
-      $ sudo snap install docker
+```bash
+$ sudo snap install docker
+```
 
    4. Before testing Docker, check the version installed using the following command:
-
-      $ docker --version
-
+```bash
+$ docker --version
+```
 
 
 ## Docker command to create and run the container
@@ -50,18 +53,21 @@ Code for creating a docker web application with Flask, MySQL and containerize us
 ## Login to mysql
 
   1. Connecting localhost to container in docker using TCP method
-
+```bash
      mysql --host=localhost --protocol=TCP -uroot -proot
 
      or
 
   2. Start the container and run the following commands
-
+```bash
      docker start contaner_name
-
+```
+```bash
      docker exec -it contaner_name bash
-
+```
+```bash
      mysql -uroot -proot
+```
 
   3. After login create database named 'College' and insert data into table based on relationship given in data model
   
@@ -94,12 +100,13 @@ Code for creating a docker web application with Flask, MySQL and containerize us
   
 ## Configuration
    1. Create config.ini file in application folder with the following content in file:
-   
+```bash
       [mysql]
       host = 'db'
       user = 'root'
       password =  'root'
       database = 'Movies'
+ ```
 
   2. Create config.py file in  application folder
      refer: ./app
