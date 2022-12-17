@@ -137,6 +137,8 @@ mysql -uroot -proot
   
 ## Deploy application in AWS
 
+   1. 
+
       
  
   
