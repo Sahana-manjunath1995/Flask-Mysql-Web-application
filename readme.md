@@ -1,6 +1,7 @@
 # Netflix project
-This is a netflix statistic dashboard. 
-Code for creating a docker web application with Flask, MySQL and containerize using docker-compose
+This project aims at creating a docker web application with Flask, MySQL, and containerize using docker-compose
+
+
 
 ## Requirements
 
@@ -58,7 +59,7 @@ $ docker --version
 ```
     or
 
-   Start the container and run the following commands
+  2. Start the container and run the following commands
 ```bash
 docker start contaner_name
 ```
@@ -69,7 +70,12 @@ docker exec -it container_name bash
 mysql -uroot -proot
 ```
 
-  3. After login create database named 'College' and insert data into table based on relationship given in data model
+  3. After login create database named 'College' and add tables into it.
+
+  4. Load data from csv file into tables created in 'College' database
+```bash
+LOAD DATA INFILE 'absolute/path/folder/name' INTO TABLE  'table_name' CHARACTER SET utf8 FIELDS TERMINATED BY ',' ENCLOSED BY '"' ESCAPED BY '"' LINES TERMINATED BY '\r\n' IGNORE 1 LINES;
+```
   
 ## Folder structure
 
