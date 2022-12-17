@@ -65,7 +65,8 @@ Code for creating a docker web application with Flask, MySQL and containerize us
 
   3. After login create database named 'College' and insert data into table based on relationship given in data model
   
-  
+## Folder structure
+
 ## Module requirements
   
   - import logging
@@ -90,7 +91,27 @@ Code for creating a docker web application with Flask, MySQL and containerize us
   2. Create config.py file in  application folder
      refer: ./app
      
-## Contai
+## Containerizing the flask application
+
+  1. Create Dockerfile in app folder
+      refer : ./app
+
+
+  2. Create requirement.txt file in app folder for listing all the dependencies
+      refer : ./app
+      
+  3. Create docker-compose.yml file in application root directory.
+
+      refer : .
+      
+  4. Command for building containers
+      docker compose  --env-file .env.local up --build
+
+
+
+  5. Container is created by using Dockerfile
+
+  6. Connection between containers is done using docker-compose.yml
  
   
 
