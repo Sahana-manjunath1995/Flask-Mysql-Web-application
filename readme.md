@@ -67,6 +67,19 @@ Code for creating a docker web application with Flask, MySQL and containerize us
   
 ## Folder structure
 
+      .
+      ├── app
+      │   ├── Dockerfile      
+      │   ├── config.ini      
+      │   ├── config.py       
+      │   ├── netflix1.py     
+      │   ├── requirements.txt
+      │   └── templates
+      │       └── movie.html
+      ├── docker-compose.yml
+      └── readme.md
+      
+
 ## Module requirements
   
   - import logging
@@ -105,13 +118,19 @@ Code for creating a docker web application with Flask, MySQL and containerize us
       refer : .
       
   4. Command for building containers
-      docker compose  --env-file .env.local up --build
+  ```bash
+  docker compose  --env-file .env.local up --build
+  ```
 
 
 
   5. Container is created by using Dockerfile
 
   6. Connection between containers is done using docker-compose.yml
+  
+## Deploy application in AWS
+
+      
  
   
 
