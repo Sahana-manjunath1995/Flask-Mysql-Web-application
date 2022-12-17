@@ -75,8 +75,9 @@ Code for creating a docker web application with Flask, MySQL and containerize us
 
 ## Installation
 
-  pip install -U flask
-  pip install mysql-connector-python
+      pip install -U flask
+  
+      pip install mysql-connector-python
   
 ## Configuration
 
