@@ -137,7 +137,50 @@ mysql -uroot -proot
   
 ## Deploy application in AWS
 
-   1. 
+   1. Create EC2 instance in AWS
+   2. Generate key-pair and download security key file ie .pem file
+    
+   ### Connect local host to EC2 using ssh comand
+   
+      1. Open an SSH client
+      
+      2.Locate the private key file. The key used to launch this instance is dockerflask.pem
+      
+      3. Change the file permission
+   ```bash
+   chmod 400 dockerflask.pem
+   ```
+   
+      4. Connect to localhost using EC2 instance Public DNS:
+  ```bash
+  Connect to your instance using its Public DNS:
+  ```bash
+  ssh -i "dockerflask.pem" ubuntu@ec2-13-232-58-4.ap-south-1.compute.amazonaws.com
+  ```
+   3. Create project directory in EC2 instance
+   
+   5. Install Docker using the following command:
+```bash
+$ sudo apt install docker.io
+``` 
+   6. Install git using the following command:
+```bash
+$ sudo apt-get install git.
+```
+  
+   7. Initialize git by using the below command
+```bash
+$ git init
+```
+
+   8. Clone the repository to EC2 instance using http method
+```bash
+$ git clone
+```
+   
+
+
+  
 
       
  
