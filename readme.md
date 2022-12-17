@@ -1,6 +1,6 @@
 # Netflix project
 This is a netflix statistic dashboard. 
-Code for creating a docker web application with Flask, MySQL and containerize using docker-compose tutorial
+Code for creating a docker web application with Flask, MySQL and containerize using docker-compose
 
 ## Requirements
 
@@ -122,20 +122,18 @@ mysql -uroot -proot
       
   3. Create docker-compose.yml file in application root directory.
 
-      refer : .
+      refer : application root directory
       
   4. Command for building containers
   ```bash
   docker compose  --env-file .env.local up --build
   ```
 
-
-
   5. Container is created by using Dockerfile
 
   6. Connection between containers is done using docker-compose.yml
   
-## Deploy application in AWS
+## Deploy the application in AWS
 
    1. Create EC2 instance in AWS
    2. Generate key-pair and download security key file ie .pem file
@@ -152,45 +150,38 @@ mysql -uroot -proot
    ```
    
       4. Connect to localhost using EC2 instance Public DNS:
-  ```bash
-  Connect to your instance using its Public DNS:
+ 
+  
   ```bash
   ssh -i "dockerflask.pem" ubuntu@ec2-13-232-58-4.ap-south-1.compute.amazonaws.com
   ```
-   3. Create project directory in EC2 instance
+      5. Create project directory in EC2 instance
    
-   5. Install Docker using the following command:
-```bash
-$ sudo apt install docker.io
-``` 
-   6. Install git using the following command:
-```bash
-$ sudo apt-get install git.
-```
+      6. Install Docker using the following command:
+  ```bash
+  $ sudo apt install docker.io
+  ``` 
+      7. Install git using the following command:
+  ```bash
+   $ sudo apt-get install git.
+  ```
   
-   7. Initialize git by using the below command
-```bash
-$ git init
-```
+      8. Initialize git by using the below command
+  ```bash
+  $ git init
+  ```
 
-   8. Clone the repository to EC2 instance using http method
-```bash
-$ git clone
-```
+      9. Clone the repository to EC2 instance using http method
+  ```bash
+  $ git clone https://github.com/Sahana-manjunath1995/netflix_project.git
+  ```
    
-
-
-  
-
-      
- 
-  
-
-
-### How to run?
-```bash
-docker compose  --env-file .env.local up --build
-```
+      10. Run the application using docker compose
+  ```bash
+  docker compose  --env-file .env.dev up --build
+  ```
+   
+## Extra information
 ### How to stop?
 ```bash
 docker compose  --env-file .env.local.wsl down
