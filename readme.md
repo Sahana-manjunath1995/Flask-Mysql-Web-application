@@ -54,19 +54,19 @@ $ docker --version
 
   1. Connecting localhost to container in docker using TCP method
 ```bash
-     mysql --host=localhost --protocol=TCP -uroot -proot
+ mysql --host=localhost --protocol=TCP -uroot -proot
+```
+    or
 
-     or
-
-  2. Start the container and run the following commands
+   Start the container and run the following commands
 ```bash
-     docker start contaner_name
+docker start contaner_name
 ```
 ```bash
-     docker exec -it contaner_name bash
+docker exec -it container_name bash
 ```
 ```bash
-     mysql -uroot -proot
+mysql -uroot -proot
 ```
 
   3. After login create database named 'College' and insert data into table based on relationship given in data model
