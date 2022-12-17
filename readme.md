@@ -1,5 +1,6 @@
 # Netflix project
-This is a netflix statistic dashboard.
+This is a netflix statistic dashboard. 
+Code for creating a docker web application with Flask, MySQL and containerize using docker-compose tutorial
 
 ### How to run?
 ```bash
