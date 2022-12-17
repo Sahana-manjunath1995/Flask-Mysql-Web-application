@@ -76,22 +76,21 @@ Code for creating a docker web application with Flask, MySQL and containerize us
 ## Installation
 
       pip install -U flask
-      
-  
       pip install mysql-connector-python
   
 ## Configuration
+   1. Create config.ini file in application folder with the following content in file:
+   
+      [mysql]
+      host = 'db'
+      user = 'root'
+      password =  'root'
+      database = 'Movies'
 
-  1. Create config.ini file in application folder with the following content in file:
-    [mysql]
-    host = 'db'
-    user = 'root'
-    password =  'root'
-    database = 'Movies'
-    
   2. Create config.py file in  application folder
      refer: ./app
      
+## Contai
  
   
 
