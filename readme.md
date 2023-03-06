@@ -1,8 +1,8 @@
 # Flask-Mysql-Web-application
-This project aims at creating a docker web application with Flask, MySQL, and containerize using docker-compose
+This project aims at creating a docker web application with Flask, MySQL, and containerize using docker-compose. HTML, JavaScript, and CSS were used in the frontend to display a list of movie titles, directors, and actors. Data was retrieved from the MySQL database using Flask. 
 
 ## System design for Flask-Mysql-Web-application
-![image](https://user-images.githubusercontent.com/115713117/223037959-4d69b5b3-fdc1-4c13-b352-04ccd7a37bd0.png)
+![image](https://user-images.githubusercontent.com/115713117/223181875-0e16d560-8949-4955-92a4-898cb7b9d6e1.png)
 
 ## Requirements
 
