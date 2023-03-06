@@ -1,7 +1,8 @@
-# Netflix project
+# Flask-Mysql-Web-application
 This project aims at creating a docker web application with Flask, MySQL, and containerize using docker-compose
 
-
+## System design for Flask-Mysql-Web-application
+![image](https://user-images.githubusercontent.com/115713117/223037959-4d69b5b3-fdc1-4c13-b352-04ccd7a37bd0.png)
 
 ## Requirements
 
@@ -44,7 +45,7 @@ $ docker --version
 
     1. docker pull mariadb:latest
 
-    2. docker run --d -p 3306:3306 --network mysql-network -v /var/lib/mysql/data:/var/lib/mysql/data -v /mnt/e/Movies1/movie_oup.csv:/mnt/e/Movies1/movie_oup.csv -v
+    2. docker run --d -p 3306:3306 --network mysql-network -v /mnt/e/Movies1/movie_oup.csv:/mnt/e/Movies1/movie_oup.csv -v
     /mnt/e/Movies1/director_oup.csv:/mnt/e/Movies1/director_oup.csv -v /mnt/e/Movies1/cast_oup.csv:/mnt/e/Movies1/cast_oup.csv -v
     /mnt/e/Movies1/netflix_movie_title.csv:/mnt/e/Movies1/netflix_movie_title.csv --name mysqldb --env MARIADB_USER=sahana --env MARIADB_PASSWORD=root --env
     MARIADB_ROOT_PASSWORD=root  mariadb:latest
